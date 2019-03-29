@@ -39,7 +39,7 @@ export const login = (user, history) => dispatch => {
                     user: decode
                 }
             })
-            history.push('/')
+            history.push('/dashboard')
         })
         .catch(error => {
             console.log(error.response.data)
