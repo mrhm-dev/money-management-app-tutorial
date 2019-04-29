@@ -6,12 +6,14 @@ import Home from '../pages/Home'
 import Login from '../pages/Login'
 import Register from '../pages/Register'
 import Dashboard from '../pages/Dashboard'
+import Navigation from '../components/Navigation'
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
-      <div className="container">
+        <div className="container">
+        <Navigation />
         <Switch>
             <Route path='/' exact component={Home} />
             <Route path='/login' component={Login} />
