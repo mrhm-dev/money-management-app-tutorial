@@ -62,10 +62,9 @@ class Dashboard extends React.Component {
                         isOpen={this.state.createModalOpen}
                         close={this.closeCreateModal}
                     />
-                    
                     <br />
                     <h1>Transactions: </h1>
-                    <ul className='list-group'>
+                    {transactions.length > 0 ? <ul className='list-group'>
                         {
                             transactions.map(transaction => (
                                 <li
@@ -73,31 +72,10 @@ class Dashboard extends React.Component {
                                     className='list-group-item'>
                                     <p>Type: {transaction.type}</p>
                                     <p>Amount: {transaction.amount}</p>
-                                    {
-                                        this.state.id === transaction._id ?
-                                        <UpdateTransaction
-                                        isOpen={this.state.updateModalOpen}
-                                                close={this.closeUpdateModal}
-                                                transaction={transaction}
-                                            /> :
-                                            null
-                                    }
-                                    <button
-                                        className='btn btn-danger'
-                                        onClick={() => this.props.removeTransaction(transaction._id)}
-                                    >
-                                        Remove
-                                    </button>
-                                    <button
-                                        className='btn btn-success'
-                                        onClick={() => this.openUpdateModal(transaction._id)}
-                                    >
-                                        Update
-                                    </button>
                                 </li>
                             ))
                         }
-                    </ul>
+                    </ul> : <p>There is no transaction</p>}
                 </div>
             </div>
         )

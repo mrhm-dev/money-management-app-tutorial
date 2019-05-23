@@ -3,7 +3,7 @@ const User = require('../model/User')
 const {serverError} = require('../util/error')
 
 module.exports = {
-    create(req, res) {
+    create(req, res, next) {
         let { amount, note, type } = req.body
         let userId = req.user._id
 
@@ -14,7 +14,6 @@ module.exports = {
         transaction.save()
             .then(trans => {
                 let updatedUser = { ...req.user._doc }
-                console.log(updatedUser)
                 if (type === 'income') {
                     updatedUser.balance = updatedUser.balance + amount
                     updatedUser.income = updatedUser.income + amount

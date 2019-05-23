@@ -20,6 +20,7 @@ export const loadTransactions = () => dispatch => {
 export const addNewTransaction = transaction => dispatch => {
     Axios.post('/api/transactions/', transaction)
         .then(response => {
+            console.log(response)
             dispatch({type: Types.CREATE_TRANSACTION, payload: { transaction: response.data}})
         })
         .catch(error => {
